@@ -1,0 +1,36 @@
+CSC549 Homework 3 -- Vivienne Clarke
+Explain script choices 
+
+(i) blast program
+	
+I chose to use blastp, which is protein blast, based on what I saw when I opened
+the human.fa and mouse.fa files. The sequences in these files were not nucleotide
+sequences (ATGC) rather protein sequences. Due to this observation, I went with 
+blastp as it is designed for comparing amino acid queries against a protein 
+database. 
+
+(ii) substitution matrix
+
+A substitution matrix is a table used in bioinformatics to score the likelihood 
+of one amino acid being replaced by another during evolution. It helps researchers 
+understand how similar or different two protein sequences are. Blast uses the 
+BLOSUM matrix by default. We learned in class that "BLOSUM is based on frequency of 
+changes in closely conserved, homologous blocks of motifs – the higher the more 
+stringent, e.g. BLOSUM80 is biased towards finding motifs that are highly conserved". 
+This version of blast uses BLOSUM62 for blastp.  it’s designed for comparing sequences 
+that share about 62% similarity- which was previously determined before the program 
+was made. 
+
+(iii) choice of parameters
+
+E-value - represents the number of expected hits of similar quality that could occur 
+by random chance. I used 0.001 because it is standard and commonly used in protein 
+blast searches. 
+
+outfmt - Output Format is the way results are presented after sequence comparison. 
+The value I used, 5, corresponds to XML output, which makes the output formatted 
+well for parsing (as we saw in class), specifically with Bio.Blast.NCBIXML.parse(). 
+
+db - Database Name. In order to make sure the results are compared properly the 
+database needed to be formatted. I made mouse.fa into mouse_d with makeblastdb which
+is a blast command. 
